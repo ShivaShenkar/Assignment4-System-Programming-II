@@ -30,7 +30,7 @@ namespace ariel{
         
         friend std::ostream& operator<<(std::ostream& os,MyContainer<T> mc){
             os<<"( ";
-            for(int i=0;i<=mc.size();++i) os<<""+mc.get(i)+" ";
+            for(int i=0;i<mc.size();++i) os<<""<<mc.get(i)<<" ";
             os<<")"<<std::endl;
         }
         AscendingOrder<T> begin_ascending_order(){

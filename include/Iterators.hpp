@@ -12,13 +12,8 @@ namespace ariel{
 
 
         public:
-            Iterator(vector<T> vec) : ind(0){
-                dataVec = vec;
-            }
-            Iterator(vector<T> vec,int index){
-                ind=index;
-                dataVec = vec;
-            }
+            Iterator(vector<T> vec) : ind(0),dataVec(vec){}
+            Iterator(vector<T> vec,int index):ind(index),dataVec(vec){}
             Iterator<T>& begin(){
                 return Iterator<T>(dataVec);
             }
@@ -26,7 +21,7 @@ namespace ariel{
                 return Iterator<T>(dataVec, dataVec.size()-1);
             }
             T operator*(){return dataVec[ind];}
-            Iterator<T>& operator++(T){
+            Iterator<T>& operator++(int){
                 if(ind<dataVec.size()){
                     ind++;
                     return *this;

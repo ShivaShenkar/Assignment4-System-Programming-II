@@ -17,7 +17,6 @@ class Person{
     }
 };
 TEST_CASE("Strings Iterators"){
-    vector<string> vec1 = {"abba", "","","","zulu","alpha","","golf","","",""};
     MyContainer<string> mcString;
     mcString.addElement("abba");
     mcString.addElement("zuzu");
@@ -72,6 +71,7 @@ TEST_CASE("Strings Iterators"){
         mcSCOrder.addElement(*i);
     }
     vector<string> res1(res.rbegin(),res.rend());
+    g
 
 
     for(int i=0;i<mcString.size();i++){

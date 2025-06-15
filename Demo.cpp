@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include "include/MyContainer.hpp"
 using namespace ariel;
@@ -41,7 +42,6 @@ int main() {
     }
     std::cout << std::endl;
 
-    
 
     return 0;
 }
