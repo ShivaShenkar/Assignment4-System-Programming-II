@@ -1,3 +1,4 @@
+//fikhman2005@gmail.com
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include <string>
 #include <vector>
@@ -6,17 +7,37 @@
 using std::vector;
 using std::string;
 using namespace ariel;
+//made a Person class for testing Iterators on this data type
+//added all necassery functions for the Iterators to work on Person
 class Person{
     public:
     int age;
-    bool sex;
+    bool sex; // false for male , true for female
     string name;
+    //constructor for Person
     Person(string name,int age,bool sex):name(name),age(age),sex(sex){}
-    bool operator<(Person& p){
+    //Compare operators, all operators are compared by age
+    //less than
+    bool operator<(const Person& p) const{
         return age<p.age;
     }
+    //greater than
+    bool operator>(const Person& other) const {
+    return age > other.age;
+    }
+    //equal
+    bool operator==(const Person& p) const{
+        return age==p.age;
+    }
+    //not equal
+    bool operator!=(const Person& p) const{
+        return age!=p.age;
+    }
 };
+
+//Test case for string container
 TEST_CASE("Strings Iterators"){
+    //setting up the container
     MyContainer<string> mcString;
     mcString.addElement("abba");
     mcString.addElement("zuzu");
@@ -28,6 +49,7 @@ TEST_CASE("Strings Iterators"){
     mcString.addElement("delta");
 
 
+    //test Order<string> Iterator
     MyContainer<string> mcOrder;
     for(auto i=mcString.begin_order();i!=mcString.end_order();++i){
         mcOrder.addElement(*i);
@@ -36,7 +58,6 @@ TEST_CASE("Strings Iterators"){
         CHECK_EQ(mcOrder.get(i),mcString.get(i));
     }
     
-
     MyContainer<string> mcRevOrder;
     for(auto i=mcString.begin_reverse_order();i!=mcString.end_reverse_order();++i){
         mcRevOrder.addElement(*i);
@@ -235,5 +256,83 @@ TEST_CASE("double Iterators"){
     vector<double> vec3Double ={100,10.10,1,2.98,88.7010510,3.14,10000.23456789,9.3};
     for(int i=0;i<mcDouble.size();i++){
         CHECK_EQ(mcMidOutOrder.get(i),vec3Double[i]);
+    }
+}
+TEST_CASE("Person Iterators"){
+    Person p1("Boaz",50,false),p2("Mor",41,false),p3("Oz",21,false),p4("Elina",43,true),
+    p5("Netzer",10,false),p6("Keren",33,false),p7("Lior",200,false),p8("Barak",69,true);
+
+    MyContainer<Person> mcPerson;
+    mcPerson.addElement(p1);
+    mcPerson.addElement(p2);
+    mcPerson.addElement(p3);
+    mcPerson.addElement(p4);
+    mcPerson.addElement(p5);
+    mcPerson.addElement(p6);
+    mcPerson.addElement(p7);
+    mcPerson.addElement(p8);
+
+
+
+    MyContainer<Person> mcOrder;
+    for(auto i=mcPerson.begin_order();i!=mcPerson.end_order();++i){
+        mcOrder.addElement(*i);
+    }
+    for(int i=0;i<mcPerson.size();i++){
+        CHECK_EQ(mcOrder.get(i),mcPerson.get(i));
+    }
+    
+
+    MyContainer<Person> mcRevOrder;
+    for(auto i=mcPerson.begin_reverse_order();i!=mcPerson.end_reverse_order();++i){
+        mcRevOrder.addElement(*i);
+    }
+    for(int i=0;i<mcPerson.size();i++){
+        CHECK_EQ(mcRevOrder.get(i),mcPerson.get(mcOrder.size()-1-i));
+    }
+
+
+    MyContainer<Person> mcAscOrder;
+    for(auto i=mcPerson.begin_ascending_order();i!=mcPerson.end_ascending_order();++i){
+        mcAscOrder.addElement(*i);
+    }
+    
+    vector<Person> vec1Person = {p5,p3,p6,p2,p4,p1,p8,p7};
+
+    for(int i=0;i<mcPerson.size();i++){
+        CHECK_EQ(mcAscOrder.get(i),vec1Person[i]);
+    }
+
+
+    MyContainer<Person> mcDescOrder;
+    for(auto i=mcPerson.begin_descending_order();i!=mcPerson.end_descending_order();++i){
+        mcDescOrder.addElement(*i);
+    }
+    std::reverse(vec1Person.begin(),vec1Person.end());
+    for(int i=0;i<mcPerson.size();i++){
+        CHECK_EQ(mcDescOrder.get(i),vec1Person[i]);
+    }
+
+    MyContainer<Person> mcSCOrder;
+    for(auto i=mcPerson.begin_side_cross_order();i!=mcPerson.end_side_cross_order();++i){
+        mcSCOrder.addElement(*i);
+    }
+
+    vector<Person> vec2Person(vec1Person.rbegin(),vec1Person.rend());
+    for(int i=0;i<mcPerson.size();i++){
+        if(i%2==0)
+            CHECK_EQ(mcSCOrder.get(i),vec2Person[i/2]);
+        else
+            CHECK_EQ(mcSCOrder.get(i),vec1Person[i/2]);
+    }
+
+
+    MyContainer<Person> mcMidOutOrder;
+    for(auto i=mcPerson.begin_middle_out_order();i!=mcPerson.end_middle_out_order();++i){
+        mcMidOutOrder.addElement(*i);
+    }
+    vector<Person> vec3Person ={p5,p4,p6,p3,p7,p2,p8,p1};
+    for(int i=0;i<mcPerson.size();i++){
+        CHECK_EQ(mcMidOutOrder.get(i),vec3Person[i]);
     }
 }

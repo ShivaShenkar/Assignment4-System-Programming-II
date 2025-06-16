@@ -11,6 +11,10 @@ demo: $(TARGETDEMO)
 
 test: $(TARGETTEST)
 
+valgrind:
+	valgrind --leak-check=full --show-leak-kinds=all $(TARGETDEMO)
+	valgrind --leak-check=full --show-leak-kinds=all $(TARGETTEST)
+
 $(TARGETDEMO): $(SRCS)
 	$(CXX) $(CFLAGS) -o $@ $^
 
