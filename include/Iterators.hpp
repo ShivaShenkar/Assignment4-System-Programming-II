@@ -127,10 +127,13 @@ namespace ariel{
                 vector<T> vec = this->dataVec;
                 int count=1;
                 vector<T> res;
-                res.push_back(vec[vec.size()/2]);
+                if(vec.size()>0)
+                    res.push_back(vec[vec.size()/2]);
                 for(int i=0;i<vec.size()/2;i++){
-                    res.push_back(vec[vec.size()/2-count]);
-                    res.push_back(vec[vec.size()/2+count]);
+                    if(vec.size()/2-count>=0)
+                        res.push_back(vec[vec.size()/2-count]);
+                    if(vec.size()/2+count<vec.size())
+                        res.push_back(vec[vec.size()/2+count]);
                     count++;
                 }
                 this->dataVec = res;

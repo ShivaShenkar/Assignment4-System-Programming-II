@@ -32,6 +32,7 @@ namespace ariel{
             os<<"( ";
             for(int i=0;i<mc.size();++i) os<<""<<mc.get(i)<<" ";
             os<<")"<<std::endl;
+            return os;
         }
         AscendingOrder<T> begin_ascending_order(){
             AscendingOrder<T> ao(items);
@@ -82,7 +83,7 @@ namespace ariel{
             MiddleOutOrder<T> moo(items,items.size());
             return moo;
         }
-
+        
 
 
     };
