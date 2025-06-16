@@ -12,8 +12,7 @@ This project implements a generic container class, `MyContainer`, in C++. The co
 .
 ├── include/
 │   ├── MyContainer.hpp      # Declaration and implementation of the MyContainer class
-│   ├── Iterators.hpp        # Declaration and implementation of custom iterator classes
-│   └── Person.hpp           # (Optional) Definition of the Person class for testing
+│   └── Iterators.hpp        # Declaration and implementation of custom iterator classes
 ├── src/
 │   └── Demo.cpp             # Example usage and test cases for MyContainer and iterators
 ├── Makefile                 # Build instructions
@@ -46,22 +45,17 @@ This project implements a generic container class, `MyContainer`, in C++. The co
 ## How to Run
 
 1. **Build the Project**
-   - Make sure you have a C++ compiler (e.g., `g++`) installed.
+   - Make sure you have a Clang++ compiler installed.
    - Run the following command in the project root directory:
      ```
-     make
+     make all
      ```
 
-2. **Run the Demo**
-   - After building, execute the demo program:
+2. **Run the Programs**
+   - After building, execute the main and tests programs:
      ```
-     ./demo
+     ./bin/main
+     ./bin/test
      ```
-
-3. **Custom Usage**
-   - You can modify `Demo.cpp` to test the container and iterators with different types and traversal orders.
 
 ---
-
-**Note:**  
-Ensure that any custom class used with `MyContainer` (like `Person`) implements the necessary comparison operators (`operator<`, `operator==`, etc.) for
