@@ -58,6 +58,7 @@ TEST_CASE("Strings Iterators"){
         CHECK_EQ(mcOrder.get(i),mcString.get(i));
     }
     
+    //test ReverseOrder<string> Iterator
     MyContainer<string> mcRevOrder;
     for(auto i=mcString.begin_reverse_order();i!=mcString.end_reverse_order();++i){
         mcRevOrder.addElement(*i);
@@ -66,7 +67,7 @@ TEST_CASE("Strings Iterators"){
         CHECK_EQ(mcRevOrder.get(i),mcString.get(mcOrder.size()-1-i));
     }
 
-
+    //test AscendingOrder<string> Iterator 
     MyContainer<string> mcAscOrder;
     for(auto i=mcString.begin_ascending_order();i!=mcString.end_ascending_order();++i){
         mcAscOrder.addElement(*i);
@@ -77,7 +78,7 @@ TEST_CASE("Strings Iterators"){
         CHECK_EQ(mcAscOrder.get(i),res[i]);
     }
 
-
+    //test DescendingOrder<string> Iterator 
     MyContainer<string> mcDescOrder;
     for(auto i=mcString.begin_descending_order();i!=mcString.end_descending_order();++i){
         mcDescOrder.addElement(*i);
@@ -87,6 +88,7 @@ TEST_CASE("Strings Iterators"){
         CHECK_EQ(mcDescOrder.get(i),res[i]);
     }
 
+    //test SideCrossOrder<string> Iterator 
     MyContainer<string> mcSCOrder;
     for(auto i=mcString.begin_side_cross_order();i!=mcString.end_side_cross_order();++i){
         mcSCOrder.addElement(*i);
@@ -100,7 +102,7 @@ TEST_CASE("Strings Iterators"){
             CHECK_EQ(mcSCOrder.get(i),res[i/2]);
     }
 
-
+    //test MiddleOutOrder<string> Iterator 
     MyContainer<string> mcMidOutOrder;
     for(auto i=mcString.begin_middle_out_order();i!=mcString.end_middle_out_order();++i){
         mcMidOutOrder.addElement(*i);
@@ -111,7 +113,9 @@ TEST_CASE("Strings Iterators"){
     }
 }
 
+//Test case for char container
 TEST_CASE("char Iterators"){
+    //setting up the container
     MyContainer<char> mcChar;
     mcChar.addElement('a');
     mcChar.addElement('q');
@@ -124,6 +128,7 @@ TEST_CASE("char Iterators"){
 
     vector<char> charVec = {'a','q','f',0,4,'0','!','?'};
 
+    //test Order<char> Iterator
     MyContainer<char> mcOrder;
     for(auto i=mcChar.begin_order();i!=mcChar.end_order();++i){
         mcOrder.addElement(*i);
@@ -132,7 +137,7 @@ TEST_CASE("char Iterators"){
         CHECK_EQ(mcOrder.get(i),mcChar.get(i));
     }
     
-
+    //test ReverseOrder<char> Iterator
     MyContainer<char> mcRevOrder;
     for(auto i=mcChar.begin_reverse_order();i!=mcChar.end_reverse_order();++i){
         mcRevOrder.addElement(*i);
@@ -141,7 +146,7 @@ TEST_CASE("char Iterators"){
         CHECK_EQ(mcRevOrder.get(i),mcChar.get(mcOrder.size()-1-i));
     }
 
-
+    //test AscendingOrder<char> Iterator 
     MyContainer<char> mcAscOrder;
     for(auto i=mcChar.begin_ascending_order();i!=mcChar.end_ascending_order();++i){
         mcAscOrder.addElement(*i);
@@ -152,7 +157,7 @@ TEST_CASE("char Iterators"){
         CHECK_EQ(mcAscOrder.get(i),charVec[i]);
     }
 
-
+    //test DescendingOrder<char> Iterator 
     MyContainer<char> mcDescOrder;
     for(auto i=mcChar.begin_descending_order();i!=mcChar.end_descending_order();++i){
         mcDescOrder.addElement(*i);
@@ -162,6 +167,7 @@ TEST_CASE("char Iterators"){
         CHECK_EQ(mcDescOrder.get(i),charVec[i]);
     }
 
+    //test SideCrossOrder<char> Iterator 
     MyContainer<char> mcSCOrder;
     for(auto i=mcChar.begin_side_cross_order();i!=mcChar.end_side_cross_order();++i){
         mcSCOrder.addElement(*i);
@@ -175,7 +181,7 @@ TEST_CASE("char Iterators"){
             CHECK_EQ(mcSCOrder.get(i),charVec[i/2]);
     }
 
-
+    //test MiddleOutOrder<char> Iterator 
     MyContainer<char> mcMidOutOrder;
     for(auto i=mcChar.begin_middle_out_order();i!=mcChar.end_middle_out_order();++i){
         mcMidOutOrder.addElement(*i);
@@ -185,7 +191,9 @@ TEST_CASE("char Iterators"){
         CHECK_EQ(mcMidOutOrder.get(i),charVec3[i]);
     }
 }
+//Test case for double container
 TEST_CASE("double Iterators"){
+    //setting up the container
     MyContainer<double> mcDouble;
     mcDouble.addElement(9.3);
     mcDouble.addElement(3.14);
@@ -196,7 +204,7 @@ TEST_CASE("double Iterators"){
     mcDouble.addElement(88.7010510);
     mcDouble.addElement(10000.23456789);
 
-
+    //test Order<double> Iterator
     MyContainer<double> mcOrder;
     for(auto i=mcDouble.begin_order();i!=mcDouble.end_order();++i){
         mcOrder.addElement(*i);
@@ -205,7 +213,7 @@ TEST_CASE("double Iterators"){
         CHECK_EQ(mcOrder.get(i),mcDouble.get(i));
     }
     
-
+    //test ReverseOrder<double> Iterator
     MyContainer<double> mcRevOrder;
     for(auto i=mcDouble.begin_reverse_order();i!=mcDouble.end_reverse_order();++i){
         mcRevOrder.addElement(*i);
@@ -214,7 +222,7 @@ TEST_CASE("double Iterators"){
         CHECK_EQ(mcRevOrder.get(i),mcDouble.get(mcOrder.size()-1-i));
     }
 
-
+    //test AscendingOrder<double> Iterator
     MyContainer<double> mcAscOrder;
     for(auto i=mcDouble.begin_ascending_order();i!=mcDouble.end_ascending_order();++i){
         mcAscOrder.addElement(*i);
@@ -225,7 +233,7 @@ TEST_CASE("double Iterators"){
         CHECK_EQ(mcAscOrder.get(i),vec1Double[i]);
     }
 
-
+     //test DescendingOrder<double> Iterator 
     MyContainer<double> mcDescOrder;
     for(auto i=mcDouble.begin_descending_order();i!=mcDouble.end_descending_order();++i){
         mcDescOrder.addElement(*i);
@@ -235,6 +243,7 @@ TEST_CASE("double Iterators"){
         CHECK_EQ(mcDescOrder.get(i),vec1Double[i]);
     }
 
+    //test SideCrossOrder<double> Iterator 
     MyContainer<double> mcSCOrder;
     for(auto i=mcDouble.begin_side_cross_order();i!=mcDouble.end_side_cross_order();++i){
         mcSCOrder.addElement(*i);
@@ -248,7 +257,7 @@ TEST_CASE("double Iterators"){
             CHECK_EQ(mcSCOrder.get(i),vec1Double[i/2]);
     }
 
-
+    //test MiddleOutOrder<double> Iterator 
     MyContainer<double> mcMidOutOrder;
     for(auto i=mcDouble.begin_middle_out_order();i!=mcDouble.end_middle_out_order();++i){
         mcMidOutOrder.addElement(*i);
@@ -258,7 +267,9 @@ TEST_CASE("double Iterators"){
         CHECK_EQ(mcMidOutOrder.get(i),vec3Double[i]);
     }
 }
+//Test case for Person container
 TEST_CASE("Person Iterators"){
+    //setting up the container
     Person p1("Boaz",50,false),p2("Mor",41,false),p3("Oz",21,false),p4("Elina",43,true),
     p5("Netzer",10,false),p6("Keren",33,false),p7("Lior",200,false),p8("Barak",69,true);
 
@@ -273,7 +284,7 @@ TEST_CASE("Person Iterators"){
     mcPerson.addElement(p8);
 
 
-
+    //test Order<Person> Iterator
     MyContainer<Person> mcOrder;
     for(auto i=mcPerson.begin_order();i!=mcPerson.end_order();++i){
         mcOrder.addElement(*i);
@@ -282,7 +293,7 @@ TEST_CASE("Person Iterators"){
         CHECK_EQ(mcOrder.get(i),mcPerson.get(i));
     }
     
-
+    //test ReverseOrder<Person> Iterator
     MyContainer<Person> mcRevOrder;
     for(auto i=mcPerson.begin_reverse_order();i!=mcPerson.end_reverse_order();++i){
         mcRevOrder.addElement(*i);
@@ -291,8 +302,8 @@ TEST_CASE("Person Iterators"){
         CHECK_EQ(mcRevOrder.get(i),mcPerson.get(mcOrder.size()-1-i));
     }
 
-
-    MyContainer<Person> mcAscOrder;
+    //test AscendingOrder<Person> Iterator 
+    MyContainer<Person> mcAscOrder; 
     for(auto i=mcPerson.begin_ascending_order();i!=mcPerson.end_ascending_order();++i){
         mcAscOrder.addElement(*i);
     }
@@ -304,6 +315,7 @@ TEST_CASE("Person Iterators"){
     }
 
 
+    //test DescendingOrder<Person> Iterator 
     MyContainer<Person> mcDescOrder;
     for(auto i=mcPerson.begin_descending_order();i!=mcPerson.end_descending_order();++i){
         mcDescOrder.addElement(*i);
@@ -313,6 +325,8 @@ TEST_CASE("Person Iterators"){
         CHECK_EQ(mcDescOrder.get(i),vec1Person[i]);
     }
 
+
+    //test SideCrossOrder<Person> Iterator 
     MyContainer<Person> mcSCOrder;
     for(auto i=mcPerson.begin_side_cross_order();i!=mcPerson.end_side_cross_order();++i){
         mcSCOrder.addElement(*i);
@@ -327,6 +341,7 @@ TEST_CASE("Person Iterators"){
     }
 
 
+    //test MiddleOutOrder<Person> Iterator 
     MyContainer<Person> mcMidOutOrder;
     for(auto i=mcPerson.begin_middle_out_order();i!=mcPerson.end_middle_out_order();++i){
         mcMidOutOrder.addElement(*i);

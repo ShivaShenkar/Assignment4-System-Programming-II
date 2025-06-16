@@ -1,3 +1,4 @@
+#fikhman2005@gmail.com
 CXX=clang++
 CFLAGS = -g -Wall -Wextra 
 SRCS= Demo.cpp
@@ -7,7 +8,7 @@ TARGETTEST = bin/test.out
 
 all: demo test
 
-demo: $(TARGETDEMO)
+main: $(TARGETDEMO)
 
 test: $(TARGETTEST)
 

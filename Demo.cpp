@@ -1,3 +1,4 @@
+//fikhman2005@gmail.com
 #pragma once
 #include <iostream>
 #include "include/MyContainer.hpp"
@@ -41,7 +42,6 @@ int main() {
         std::cout << *it << ' ';  // 6 15 1 7 2
     }
     std::cout << std::endl;
-    std::cout << container<<std::endl;
 
     
     return 0;
